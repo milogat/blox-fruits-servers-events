@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blox Fruits Servers Events</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🍎 Blox Fruits Servers Events</div>
+    <button id="eventsBtn" class="ghost">Eventos</button>
+  </header>
+
+  <main>
+    <section id="welcome" class="screen active">
+      <div class="hero">
+        <div class="fruit">🍏</div>
+        <h1>Bienvenido a<br><span>Blox Fruits Servers Events</span></h1>
+        <p>Encuentra jugadores que organizan eventos y únete solamente cuando el evento esté activo.</p>
+        <button id="nextBtn" class="primary">Siguiente →</button>
+      </div>
+    </section>
+
+    <section id="app" class="screen">
+      <div class="stats">
+        <div><b id="sitePlayers">0</b><small>personas en la página</small></div>
+        <div><b id="eventCount">0</b><small>eventos publicados</small></div>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-type="all">Todos</button>
+        <button class="filter" data-type="public">Públicos</button>
+        <button class="filter" data-type="private">Privados</button>
+      </div>
+
+      <div id="eventsList" class="events"></div>
+
+      <button id="createBtn" class="floating">＋ Crear evento</button>
+    </section>
+
+    <section id="create" class="screen">
+      <div class="panel">
+        <button id="backBtn" class="back">← Volver</button>
+        <h2>¿Qué evento quieres hacer?</h2>
+        <p class="muted">Puedes elegir varios.</p>
+
+        <div id="eventChoices" class="choices">
+          <label><input type="checkbox" value="Kata V2"> Kata V2</label>
+          <label><input type="checkbox" value="Leviathan"> Leviathan</label>
+          <label><input type="checkbox" value="Sea Events"> Sea Events</label>
+          <label><input type="checkbox" value="Race V4"> Race V4</label>
+          <label><input type="checkbox" value="Mirage"> Mirage</label>
+          <label><input type="checkbox" value="Otro"> Otro</label>
+        </div>
+
+        <h3>Tipo de servidor</h3>
+        <div class="server-options">
+          <label><input name="serverType" type="radio" value="public" checked> Público</label>
+          <label><input name="serverType" type="radio" value="private"> Privado</label>
+        </div>
+
+        <div id="privateBox" class="hidden">
+          <label for="privateLink">Link del servidor privado</label>
+          <input id="privateLink" type="url" placeholder="Pega aquí el enlace de Roblox">
+          <p class="warning">El enlace se usará mediante un botón de unirse. Ocultarlo en la página no lo hace imposible de descubrir técnicamente.</p>
+        </div>
+
+        <button id="publishBtn" class="primary full">Publicar evento</button>
+        <p id="formMsg" class="message"></p>
+      </div>
+    </section>
+  </main>
+
+  <template id="eventTemplate">
+    <article class="event-card">
+      <div class="event-main">
+        <div class="event-icon">⚔️</div>
+        <div>
+          <h3 class="event-title"></h3>
+          <p class="event-host"></p>
+          <span class="badge"></span>
+        </div>
+      </div>
+      <div class="event-right">
+        <span class="players">0 jugadores</span>
+        <button class="join">Unirse</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
