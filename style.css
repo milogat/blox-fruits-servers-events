@@ -1463,3 +1463,369 @@ button {
     padding: 7px;
   }
   }
+/* =====================================================
+   SERVIDORES CON VARIOS EVENTOS
+   ===================================================== */
+
+.server-event-card {
+  position: relative;
+
+  display: grid !important;
+
+  grid-template-columns:
+    62px
+    minmax(0, 1fr)
+    auto;
+
+  grid-template-rows:
+    auto
+    auto
+    auto;
+
+  column-gap: 13px;
+
+  padding: 14px !important;
+
+  min-height: 0 !important;
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   EVENTO PRINCIPAL
+   ===================================================== */
+
+.server-event-card .event-main {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+
+  min-width: 0;
+}
+
+.server-event-card .event-icon {
+  width: 58px;
+  height: 58px;
+
+  font-size: 27px;
+
+  border-radius: 13px;
+}
+
+/* =====================================================
+   TEXTO PRINCIPAL
+   ===================================================== */
+
+.server-event-card .event-information {
+  min-width: 0;
+}
+
+.server-event-card .event-information h3,
+.server-event-card .event-title {
+  margin: 0 0 4px;
+
+  font-size: 16px;
+  line-height: 1.15;
+
+  white-space: normal;
+}
+
+.server-event-card .event-host {
+  margin-bottom: 5px;
+
+  font-size: 10px;
+}
+
+.server-event-card .badge {
+  padding: 4px 6px;
+
+  font-size: 8px;
+}
+
+/* =====================================================
+   JUGADORES + UNIRSE
+   ===================================================== */
+
+.server-event-card .event-side {
+  grid-column: 3;
+  grid-row: 1 / 3;
+
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.server-event-card .players {
+  font-size: 10px;
+
+  text-align: center;
+}
+
+.server-event-card .join {
+  padding: 9px 12px;
+
+  font-size: 10px;
+}
+
+/* =====================================================
+   DESCRIPCIÓN
+   ===================================================== */
+
+.server-event-card .event-extra-info {
+  grid-column: 1 / -1;
+  grid-row: 3;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+.event-description {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--muted);
+
+  text-align: left;
+
+  font-size: 10px;
+  line-height: 1.35;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-description:hover {
+  color: var(--text);
+}
+
+.event-description.expanded {
+  white-space: normal;
+
+  overflow: visible;
+
+  text-overflow: clip;
+}
+
+/* =====================================================
+   EVENTOS ADICIONALES
+   ===================================================== */
+
+.mini-events {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 5px;
+
+  width: 100%;
+}
+
+.mini-event {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 7px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  background:
+    rgba(25,214,107,.045);
+
+  color: var(--text);
+
+  cursor: default;
+
+  max-width: 100%;
+}
+
+.mini-event-icon {
+  font-size: 12px;
+}
+
+.mini-event-text {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.mini-event-text strong {
+  font-size: 9px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-event-text small {
+  color: var(--green);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   TIEMPOS
+   ===================================================== */
+
+.event-expiration,
+.event-start {
+  align-self: flex-start;
+
+  padding: 3px 6px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(25,214,107,.06);
+
+  color: var(--green);
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+/* =====================================================
+   CANCELAR
+   ===================================================== */
+
+.server-event-card .cancel-event {
+  grid-column: 1 / -1;
+
+  width: auto;
+
+  justify-self: start;
+
+  margin-top: 3px;
+
+  padding: 7px 10px;
+
+  border:
+    1px solid rgba(255,85,85,.28);
+
+  border-radius: 7px;
+
+  background:
+    rgba(255,85,85,.07);
+
+  color: var(--danger);
+
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.server-event-card .cancel-event:hover {
+  background:
+    rgba(255,85,85,.14);
+}
+
+/* =====================================================
+   MÓVIL
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .server-event-card {
+    grid-template-columns:
+      55px
+      minmax(0, 1fr)
+      auto;
+
+    column-gap: 10px;
+
+    padding: 12px !important;
+  }
+
+  .server-event-card .event-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 23px;
+  }
+
+  .server-event-card .event-information h3,
+  .server-event-card .event-title {
+    font-size: 14px;
+  }
+
+  .server-event-card .event-side {
+    gap: 5px;
+  }
+
+  .server-event-card .join {
+    padding: 8px 10px;
+
+    font-size: 9px;
+  }
+
+  .server-event-card .players {
+    font-size: 9px;
+  }
+
+  .mini-event {
+    padding: 4px 6px;
+  }
+
+  .mini-event-text strong {
+    font-size: 8px;
+  }
+
+  .mini-event-text small {
+    font-size: 6px;
+  }
+}
+
+/* =====================================================
+   PANTALLAS MUY PEQUEÑAS
+   ===================================================== */
+
+@media (max-width: 390px) {
+
+  .server-event-card {
+    grid-template-columns:
+      48px
+      minmax(0, 1fr)
+      auto;
+
+    gap: 8px;
+  }
+
+  .server-event-card .event-icon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 20px;
+  }
+
+  .server-event-card .event-information h3,
+  .server-event-card .event-title {
+    font-size: 13px;
+  }
+
+  .server-event-card .join {
+    padding: 7px 8px;
+
+    font-size: 8px;
+  }
+  }
