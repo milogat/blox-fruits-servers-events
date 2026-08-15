@@ -1,94 +1,741 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Blox Fruits Servers Events</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- =====================================================
+       BARRA SUPERIOR
+       ===================================================== -->
+
   <header class="topbar">
-    <div class="brand">🍎 Blox Fruits Servers Events</div>
-    <button id="eventsBtn" class="ghost">Eventos</button>
+
+    <div class="brand">
+      <div class="brand-icon">⚔️</div>
+
+      <div>
+        <h1>BLOX FRUITS</h1>
+        <span>SERVER EVENTS</span>
+      </div>
+    </div>
+
+    <div class="account-area">
+
+      <button
+        id="loginBtn"
+        class="account-button"
+        type="button"
+      >
+        🎮 Iniciar sesión
+      </button>
+
+      <div
+        id="accountPanel"
+        class="account-panel hidden"
+      >
+
+        <div class="avatar">
+          👤
+        </div>
+
+        <div class="account-info">
+          <strong id="accountName">
+            Invitado
+          </strong>
+
+          <span>
+            Cuenta de Roblox
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
   </header>
 
-  <main>
-    <section id="welcome" class="screen active">
-      <div class="hero">
-        <div class="fruit">🍏</div>
-        <h1>Bienvenido a<br><span>Blox Fruits Servers Events</span></h1>
-        <p>Encuentra jugadores que organizan eventos y únete solamente cuando el evento esté activo.</p>
-        <button id="nextBtn" class="primary">Siguiente →</button>
+
+  <!-- =====================================================
+       PANTALLA DE BIENVENIDA
+       ===================================================== -->
+
+  <main id="welcome" class="screen active">
+
+    <section class="hero">
+
+      <div class="hero-glow"></div>
+
+      <div class="hero-content">
+
+        <span class="hero-label">
+          ⚡ EVENTOS DE BLOX FRUITS
+        </span>
+
+        <h2>
+          ENCUENTRA JUGADORES
+          <br>
+          PARA TUS EVENTOS
+        </h2>
+
+        <p>
+          Encuentra personas para hacer jefes,
+          eventos marítimos y actividades de
+          Blox Fruits.
+        </p>
+
+        <button
+          id="nextBtn"
+          class="main-button"
+          type="button"
+        >
+          EXPLORAR EVENTOS →
+        </button>
+
       </div>
-    </section>
 
-    <section id="app" class="screen">
-      <div class="stats">
-        <div><b id="sitePlayers">0</b><small>personas en la página</small></div>
-        <div><b id="eventCount">0</b><small>eventos publicados</small></div>
-      </div>
+      <div class="hero-stats">
 
-      <div class="filters">
-        <button class="filter active" data-type="all">Todos</button>
-        <button class="filter" data-type="public">Públicos</button>
-        <button class="filter" data-type="private">Privados</button>
-      </div>
-
-      <div id="eventsList" class="events"></div>
-
-      <button id="createBtn" class="floating">＋ Crear evento</button>
-    </section>
-
-    <section id="create" class="screen">
-      <div class="panel">
-        <button id="backBtn" class="back">← Volver</button>
-        <h2>¿Qué evento quieres hacer?</h2>
-        <p class="muted">Puedes elegir varios.</p>
-
-        <div id="eventChoices" class="choices">
-          <label><input type="checkbox" value="Kata V2"> Kata V2</label>
-          <label><input type="checkbox" value="Leviathan"> Leviathan</label>
-          <label><input type="checkbox" value="Sea Events"> Sea Events</label>
-          <label><input type="checkbox" value="Race V4"> Race V4</label>
-          <label><input type="checkbox" value="Mirage"> Mirage</label>
-          <label><input type="checkbox" value="Otro"> Otro</label>
+        <div>
+          <strong id="sitePlayers">1</strong>
+          <span>Jugadores</span>
         </div>
 
-        <h3>Tipo de servidor</h3>
-        <div class="server-options">
-          <label><input name="serverType" type="radio" value="public" checked> Público</label>
-          <label><input name="serverType" type="radio" value="private"> Privado</label>
+        <div>
+          <strong>18</strong>
+          <span>Eventos</span>
         </div>
 
-        <div id="privateBox" class="hidden">
-          <label for="privateLink">Link del servidor privado</label>
-          <input id="privateLink" type="url" placeholder="Pega aquí el enlace de Roblox">
-          <p class="warning">El enlace se usará mediante un botón de unirse. Ocultarlo en la página no lo hace imposible de descubrir técnicamente.</p>
+        <div>
+          <strong>3</strong>
+          <span>Sea</span>
         </div>
 
-        <button id="publishBtn" class="primary full">Publicar evento</button>
-        <p id="formMsg" class="message"></p>
       </div>
+
     </section>
+
   </main>
 
-  <template id="eventTemplate">
-    <article class="event-card">
-      <div class="event-main">
-        <div class="event-icon">⚔️</div>
-        <div>
-          <h3 class="event-title"></h3>
-          <p class="event-host"></p>
-          <span class="badge"></span>
+
+  <!-- =====================================================
+       PANTALLA DE EVENTOS
+       ===================================================== -->
+
+  <main id="app" class="screen">
+
+    <section class="page-header">
+
+      <div>
+
+        <span class="small-title">
+          BLOX FRUITS
+        </span>
+
+        <h2>
+          Eventos disponibles
+        </h2>
+
+        <p>
+          Encuentra jugadores y únete a un evento.
+        </p>
+
+      </div>
+
+      <button
+        id="createBtn"
+        class="main-button small"
+        type="button"
+      >
+        ＋ CREAR EVENTO
+      </button>
+
+    </section>
+
+
+    <!-- ESTADÍSTICAS -->
+
+    <section class="stats-grid">
+
+      <div class="stat-card">
+        <span>EVENTOS ACTIVOS</span>
+        <strong id="eventCount">0</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>JUGADORES</span>
+        <strong id="sitePlayers">1</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>ESTADO</span>
+        <strong class="online">
+          ● ONLINE
+        </strong>
+      </div>
+
+    </section>
+
+
+    <!-- BUSCADOR -->
+
+    <section class="search-box">
+
+      <span>🔎</span>
+
+      <input
+        id="eventSearch"
+        type="search"
+        placeholder="Buscar evento..."
+        autocomplete="off"
+      >
+
+    </section>
+
+
+    <!-- FILTROS -->
+
+    <nav class="filters">
+
+      <button
+        class="filter active"
+        data-type="all"
+        type="button"
+      >
+        TODOS
+      </button>
+
+      <button
+        class="filter"
+        data-type="public"
+        type="button"
+      >
+        🌐 PÚBLICOS
+      </button>
+
+      <button
+        class="filter"
+        data-type="private"
+        type="button"
+      >
+        🔒 PRIVADOS
+      </button>
+
+    </nav>
+
+
+    <!-- LISTA -->
+
+    <section
+      id="eventsList"
+      class="events-list"
+    ></section>
+
+
+    <!-- BOTÓN CREAR -->
+
+    <button
+      id="eventsBtn"
+      class="secondary-button"
+      type="button"
+    >
+      ACTUALIZAR EVENTOS
+    </button>
+
+
+    <!-- PLANTILLA DE EVENTO -->
+
+    <template id="eventTemplate">
+
+      <article class="event-card">
+
+        <div class="event-main">
+
+          <div class="event-icon">
+            ⚔️
+          </div>
+
+          <div class="event-information">
+
+            <h3 class="event-title">
+              Evento
+            </h3>
+
+            <p class="event-host">
+              Organizado por jugador
+            </p>
+
+            <span class="badge">
+              Evento
+            </span>
+
+          </div>
+
         </div>
+
+        <div class="event-side">
+
+          <span class="players">
+            0/12 jugadores
+          </span>
+
+          <button
+            class="join"
+            type="button"
+          >
+            UNIRSE
+          </button>
+
+        </div>
+
+      </article>
+
+    </template>
+
+  </main>
+
+
+  <!-- =====================================================
+       CREAR EVENTO
+       ===================================================== -->
+
+  <main id="create" class="screen">
+
+    <section class="create-container">
+
+      <div class="page-header">
+
+        <div>
+
+          <span class="small-title">
+            ORGANIZADOR
+          </span>
+
+          <h2>
+            Crear evento
+          </h2>
+
+          <p>
+            Publica un evento para encontrar jugadores.
+          </p>
+
+        </div>
+
+        <button
+          id="backBtn"
+          class="secondary-button"
+          type="button"
+        >
+          ← VOLVER
+        </button>
+
       </div>
-      <div class="event-right">
-        <span class="players">0 jugadores</span>
-        <button class="join">Unirse</button>
+
+
+      <!-- CUENTA -->
+
+      <section class="form-section account-section">
+
+        <div class="section-title">
+
+          <span class="section-number">
+            01
+          </span>
+
+          <div>
+            <h3>Tu cuenta</h3>
+            <p>
+              El evento quedará asociado a tu cuenta.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="profile-card">
+
+          <div class="profile-avatar">
+            👤
+          </div>
+
+          <div>
+            <strong id="creatorName">
+              Invitado
+            </strong>
+
+            <span>
+              Inicia sesión con Roblox
+            </span>
+          </div>
+
+          <button
+            id="creatorLoginBtn"
+            type="button"
+          >
+            CONECTAR
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- EVENTOS -->
+
+      <section class="form-section">
+
+        <div class="section-title">
+
+          <span class="section-number">
+            02
+          </span>
+
+          <div>
+            <h3>
+              ¿Qué evento quieres hacer?
+            </h3>
+
+            <p>
+              Puedes seleccionar uno o varios.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div
+          id="eventChoices"
+          class="event-choices"
+        ></div>
+
+      </section>
+
+
+      <!-- SERVIDOR -->
+
+      <section class="form-section">
+
+        <div class="section-title">
+
+          <span class="section-number">
+            03
+          </span>
+
+          <div>
+            <h3>
+              Tipo de servidor
+            </h3>
+
+            <p>
+              Elige dónde realizarás el evento.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="server-options">
+
+          <label class="server-option">
+
+            <input
+              type="radio"
+              name="serverType"
+              value="public"
+              checked
+            >
+
+            <div class="server-icon">
+              🌐
+            </div>
+
+            <div>
+              <strong>
+                Servidor público
+              </strong>
+
+              <span>
+                Los jugadores podrán buscar
+                el evento en un servidor público.
+              </span>
+            </div>
+
+          </label>
+
+
+          <label class="server-option">
+
+            <input
+              type="radio"
+              name="serverType"
+              value="private"
+            >
+
+            <div class="server-icon">
+              🔒
+            </div>
+
+            <div>
+              <strong>
+                Servidor privado
+              </strong>
+
+              <span>
+                Añade el enlace de tu servidor privado.
+              </span>
+            </div>
+
+          </label>
+
+        </div>
+
+
+        <div
+          id="privateBox"
+          class="private-box hidden"
+        >
+
+          <label>
+            Enlace del servidor privado
+          </label>
+
+          <input
+            id="privateLink"
+            type="url"
+            placeholder="https://www.roblox.com/share?code=..."
+          >
+
+          <small>
+            🔐 El enlace se utilizará únicamente
+            para que los jugadores puedan unirse.
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <!-- DETALLES -->
+
+      <section class="form-section">
+
+        <div class="section-title">
+
+          <span class="section-number">
+            04
+          </span>
+
+          <div>
+            <h3>
+              Detalles del evento
+            </h3>
+
+            <p>
+              Añade información para los jugadores.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="input-group full">
+
+            <label>
+              Descripción
+            </label>
+
+            <textarea
+              id="eventDescription"
+              rows="4"
+              maxlength="500"
+              placeholder="Ej: Necesitamos jugadores para hacer Leviathan. Se recomienda tener buena DPS..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Máximo de jugadores
+            </label>
+
+            <input
+              id="capacity"
+              type="number"
+              min="1"
+              max="12"
+              value="12"
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Aparecer después de
+            </label>
+
+            <select id="startDelay">
+
+              <option value="0">
+                Inmediatamente
+              </option>
+
+              <option value="1">
+                1 minuto
+              </option>
+
+              <option value="5">
+                5 minutos
+              </option>
+
+              <option value="10">
+                10 minutos
+              </option>
+
+              <option value="15">
+                15 minutos
+              </option>
+
+              <option value="30">
+                30 minutos
+              </option>
+
+              <option value="60">
+                1 hora
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label>
+              Duración del anuncio
+            </label>
+
+            <select id="duration">
+
+              <option value="0">
+                Sin límite
+              </option>
+
+              <option value="10">
+                10 minutos
+              </option>
+
+              <option value="30">
+                30 minutos
+              </option>
+
+              <option value="60">
+                1 hora
+              </option>
+
+              <option value="120">
+                2 horas
+              </option>
+
+              <option value="360">
+                6 horas
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PUBLICAR -->
+
+      <section class="publish-section">
+
+        <div
+          id="formMsg"
+          class="form-message"
+        ></div>
+
+        <button
+          id="publishBtn"
+          class="main-button publish"
+          type="button"
+        >
+          🚀 PUBLICAR EVENTO
+        </button>
+
+      </section>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       MODAL DE CUENTA
+       ===================================================== -->
+
+  <div
+    id="loginModal"
+    class="modal hidden"
+  >
+
+    <div class="modal-box">
+
+      <button
+        id="closeLogin"
+        class="modal-close"
+        type="button"
+      >
+        ×
+      </button>
+
+      <div class="modal-icon">
+        🎮
       </div>
-    </article>
-  </template>
+
+      <h2>
+        Iniciar sesión
+      </h2>
+
+      <p>
+        En la versión final podrás conectar
+        tu cuenta de Roblox.
+      </p>
+
+      <button
+        id="robloxLogin"
+        class="roblox-button"
+        type="button"
+      >
+        CONTINUAR CON ROBLOX
+      </button>
+
+      <small>
+        La conexión real con Roblox se añadirá
+        mediante autenticación segura.
+      </small>
+
+    </div>
+
+  </div>
+
 
   <script src="script.js"></script>
+
 </body>
-</html>
+  </html>
